@@ -1,0 +1,7 @@
+X, Y, W, H = map(int, input().split())
+A1 = abs(X - W)
+A2 = abs(H - Y)
+A3 = abs((X**2 + Y**2)**0.5)
+A4 = abs((W**2 + H**2)**0.5 - A3)
+ans = min(X, Y, W, H, A1, A2, A3, A4)
+print(ans)
