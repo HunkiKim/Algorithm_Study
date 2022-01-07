@@ -1,21 +1,19 @@
-ans, n = map(int, input().split())
-D = list(10000 for _ in range(ans * 2))
-Dic = {}
-for i in range(n):
-    a, b = map(int, input().split())
-    Dic[a] = b
-c = 0
-D[0] = 0
-DicK = list(Dic.keys())
-while True:
-    if c == ans:
-        break
-    for i in DicK:
-        if Dic[i] == c:
-            D[c] = i
-        else:
-            D[Dic[i] + c] = min(D[Dic[i] + c], i + D[c])
-    print(D[c])
-    c += 1
+C,N = map(int,input().split())
+INF = 10000000000
+L = [INF for _ in range(C+1)]
+D = {}
+L[0] = 0
+for i in range(N):
+    a,b = map(int,input().split())
+    D[b] = a
+    L[b] = a
 
-print(D[ans])
+for i in range(C+1):
+    print(L)
+    for j in D:
+        if i+j>=C:
+            L[C] = min(L[C],L[i] + D[j])
+        else:
+            L[i+j] = min(L[i+j],L[i] + D[j])
+
+print(L[-1])
